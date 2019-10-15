@@ -1,7 +1,7 @@
 package com.example.eurekaclientesample;
 
-import com.alan.feign.client.ClienteDTO;
-import com.alan.feign.client.IClientRest;
+
+import com.example.eurekaclientesample.model.ClienteDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,18 +15,16 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/client")
-public class ClientRest implements IClientRest {
+public class ClientRest {
 
-    @Override
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<ClienteDTO> get(@PathVariable("id") String id) {
-        return new ResponseEntity<ClienteDTO>(ClienteDTO.builder().id(id).nombre("test1").build(), HttpStatus.OK);
+        return new ResponseEntity<ClienteDTO>(ClienteDTO.builder().id(id).name("test1").build(), HttpStatus.OK);
     }
 
-    @Override
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<ClienteDTO> create() {
-        return new ResponseEntity<ClienteDTO>(ClienteDTO.builder().id("id").nombre("test1").build(), HttpStatus
+        return new ResponseEntity<ClienteDTO>(ClienteDTO.builder().id("id").name("test1").build(), HttpStatus
                 .CREATED);
     }
 }

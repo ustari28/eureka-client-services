@@ -1,9 +1,7 @@
-server:
-  port: 9400
 spring:
   application:
-    name: client-app-${server.port}
+    name: ${HOSTNAME:eureka-cliente-sample}
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8780/eureka/
+      defaultZone: http://${EUREKA_SERVER:localhost}:8761/eureka/
